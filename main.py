@@ -31,22 +31,13 @@ def screen_record():
             #    your window
             # 4. make sure that the little screen that popped up
             #    should be away from chrome browser
-		#im = ImageGrab.grab(bbox = (60,270,280,300))#(top-left,bottom-right)#(x1,y1,x2,y2)
-		#ImageGrab.grab_to_file('/home/keshav/google-dino-using-CNN-AI/im.png')(215,30)		
+		
 		image1 = pyautogui.screenshot(region =(90,245,315,250))
 		image1 = cv2.cvtColor(np.array(image1), cv2.COLOR_RGB2BGR)
-		#cv2.imwrite("roi.png", image1)
+	
 		print('took {}'.format(time.time()-last_time))
 		last_time=time.time()
-		'''
-		test_image = cv2.imread("/home/keshav/dinok/roi.png")
-		test_image = cv2.cvtColor(test_image, cv2.COLOR_BGR2GRAY)
-		test_image = cv2.resize(test_image,(50,50))
-		'''
 		
-		#test_image = image.load_img("/home/keshav/dinok/roi.png", target_size = (50, 50))
-		#test_image = image.img_to_array(test_image)
-		#test_image = np.expand_dims(test_image, axis = 0)
 		test_image = cv2.resize(image1,(50,50))
 
 		pred = model.predict(test_image.reshape(1,50,50,3))
